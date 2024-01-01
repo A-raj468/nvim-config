@@ -1,0 +1,3 @@
+local plugin = {}
+
+return plugin
