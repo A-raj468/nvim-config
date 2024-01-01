@@ -1,4 +1,4 @@
-local plugin = {
+return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
@@ -6,5 +6,3 @@ local plugin = {
         vim.cmd.colorscheme "catppuccin"
     end,
 }
-
-return plugin

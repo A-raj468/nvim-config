@@ -1,4 +1,4 @@
-local plugin = {
+return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
@@ -21,5 +21,3 @@ local plugin = {
         })
     end
 }
-
-return plugin

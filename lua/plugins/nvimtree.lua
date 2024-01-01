@@ -1,4 +1,4 @@
-local plugin = {
+return {
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false,
@@ -23,5 +23,3 @@ local plugin = {
         vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", {})
     end,
 }
-
-return plugin
