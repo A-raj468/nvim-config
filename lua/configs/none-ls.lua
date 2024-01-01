@@ -18,5 +18,5 @@ null_ls.setup({
 			})
 		end
 	end,
-	vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, {}),
+	vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { async = false }),
 })
