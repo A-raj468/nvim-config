@@ -2,6 +2,10 @@ local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({})
 
+lspconfig.clangd.setup({})
+
+lspconfig.pyright.setup({})
+
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "<F12>", vim.lsp.buf.definition, {})

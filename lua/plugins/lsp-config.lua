@@ -12,6 +12,12 @@ return {
 				ensure_installed = {
 					-- lua stuff
 					"lua_ls",
+
+					-- python stuff
+					"pyright",
+
+					-- cpp stuff
+					"clangd",
 				},
 			})
 		end,

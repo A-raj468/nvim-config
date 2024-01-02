@@ -16,3 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {}
 
 require("lazy").setup("plugins", opts)
+
+local icon = require("nvim-web-devicons").get_icon_by_filetype(filetype, opts)
+
+print(icon)
