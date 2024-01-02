@@ -5,21 +5,12 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	config = function()
-		require("nvim-tree").setup({
-			sort = {
-				sorter = "case_sensitive",
-			},
-			view = {
-				width = 30,
-			},
-			renderer = {
-				group_empty = true,
-			},
-			filters = {
-				dotfiles = true,
-			},
-		})
+	opts = function()
+		-- return require "plugins.configs.nvchad-nvimtree"
+		return require "plugins.configs.nvimtree"
+	end,
+	config = function(_, opts)
+      	require("nvim-tree").setup(opts)
 		vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", {})
 	end,
 }
