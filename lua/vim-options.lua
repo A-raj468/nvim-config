@@ -28,7 +28,13 @@ vim.keymap.set("n", "<C-s>", ":w<CR>", {})
 vim.keymap.set("n", "<C-w>", ":bd<CR>", {})
 vim.keymap.set("n", "<C-q>", ":qa<CR>", {})
 
--- keybindings for terminal
-vim.cmd("set shell=powershell.exe")
-vim.keymap.set("n", "<A-h>", ":sp<bar>term<CR><C-w>J:resize12<CR>i", {})
+-- shell configurations
+vim.cmd("let &shell = executable('pwsh') ? 'pwsh' : 'powershell'")
+vim.cmd("let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'")
+vim.cmd("let &shellredir = '2>&1 | %%{ \"$_\" } | Out-File %s; exit $LastExitCode'")
+vim.cmd("let &shellpipe  = '2>&1 | %%{ \"$_\" } | Tee-Object %s; exit $LastExitCode'")
+vim.cmd("set shellquote= shellxquote=")
+vim.keymap.set("n", "<A-h>", ":ToggleTerm direction=horizontal size=12<CR>", {})
+vim.keymap.set("n", "<A-v>", ":ToggleTerm direction=vertical size=80<CR>", {})
+vim.keymap.set("n", "<A-f>", ":ToggleTerm direction=float<CR>", {})
 vim.keymap.set("t", "<C-x>", "<C-\\><C-n>", {})
