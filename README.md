@@ -8,3 +8,4 @@ I am trying to make my own nvim config from scratch using [lazy.nvim](https://gi
     -   [telescope-ui-select.nvim](https://github.com/nvim-telescope/telescope-ui-select.nvim.git)
 -   [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git)
 -   [catppuccin](https://github.com/catppuccin/nvim.git)
+-   [lualine](https://github.com/nvim-lualine/lualine.nvim.git)
