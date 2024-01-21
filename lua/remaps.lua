@@ -27,15 +27,14 @@ mappings = {
     },
     ["v"] = {
         -- command remaps
-        [";"]= { ":", "Open command mode", {} },
+        [";"] = { ":", "Open command mode", {} },
         ["<Up>"] = { ":m '<-2<CR>gv=gv", "Move selected block Up", {} },
         ["<Down>"] = { ":m '>+1<CR>gv=gv", "Move selected block Down", {} },
     },
     ["i"] = {
         -- command remaps
         ["<C-s>"] = { "<ESC>:w<CR>", "Save file", {} },
-    }
-
+    },
 }
 
 setkeymap(mappings)

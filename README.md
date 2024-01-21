@@ -37,3 +37,32 @@ If you are using windows, you also need to have `clang` installed.
     -   [lualine](https://github.com/nvim-lualine/lualine.nvim.git)
 -   [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git)
 -   LSP stuff
+
+## LSP installed via MASON
+
+-   lua stuff
+
+    -   lua-language-server
+    -   stylua
+
+-   web dev stuff
+
+    -   css-lsp
+    -   html-lsp
+    -   typescript-language-server
+    -   deno
+    -   prettier
+
+-   c/cpp stuff
+
+    -   clangd
+    -   clang-format
+
+-   rust stuff
+
+    -   rust-analyzer
+
+-   python stuff
+    -   pyright
+    -   black
+    -   isort

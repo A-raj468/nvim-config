@@ -5,8 +5,7 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
-    opts = function()
-        return {
+    opts = {
             on_attach = function(bufnr)
                 local api = require("nvim-tree.api")
                 local function opts(desc)
@@ -92,8 +91,7 @@ return {
             filters = {
                 dotfiles = false,
             },
-        }
-    end,
+        },
     config = function(_, opts)
         require("nvim-tree").setup(opts)
         require("nvim-web-devicons").set_icon({
