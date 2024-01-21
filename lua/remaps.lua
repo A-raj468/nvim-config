@@ -16,6 +16,8 @@ mappings = {
         ["<C-j>"] = { "<C-w><C-j>", "Window Down", {} },
         ["<C-d>"] = { "<C-d>zz", "Page Down", {} },
         ["<C-u>"] = { "<C-u>zz", "Page Up", {} },
+        ["<n>"] = { "<nzzzv", "", {} },
+        ["<N>"] = { "Nzzzv", "", {} },
 
         -- command remaps
         [";"] = { ":", "Open Command mode", {} },
@@ -25,7 +27,9 @@ mappings = {
     },
     ["v"] = {
         -- command remaps
-        [";"]= {":", "Open command mode", {}},
+        [";"]= { ":", "Open command mode", {} },
+        ["<Up>"] = { ":m '<-2<CR>gv=gv", "Move selected block Up", {} },
+        ["<Down>"] = { ":m '>+1<CR>gv=gv", "Move selected block Down", {} },
     },
     ["i"] = {
         -- command remaps

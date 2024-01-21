@@ -36,4 +36,4 @@ If you are using windows, you also need to have `clang` installed.
     -   [catppuccin](https://github.com/catppuccin/nvim.git)
     -   [lualine](https://github.com/nvim-lualine/lualine.nvim.git)
 -   [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git)
--   [lspzero](https://github.com/VonHeikemen/lsp-zero.nvim.git)
+-   LSP stuff
