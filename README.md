@@ -37,6 +37,9 @@ If you are using windows, you also need to have `clang` installed.
     -   [lualine](https://github.com/nvim-lualine/lualine.nvim.git)
 -   [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git)
 -   LSP stuff
+-   [alpha](https://github.com/goolord/alpha-nvim.git)
+-   [nvterm](https://github.com/NvChad/nvterm.git)
+-   [gitsigns](https://github.com/lewis6991/gitsigns.nvim.git)
 
 ## LSP installed via MASON
 
