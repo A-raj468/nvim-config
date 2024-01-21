@@ -6,8 +6,8 @@ return {
         },
 
         config = function()
-            local alpha = require("alpha")
-            local dashboard = require("alpha.themes.startify")
+            local alpha = require "alpha"
+            local dashboard = require "alpha.themes.dashboard"
 
             dashboard.section.header.val = {
                 [[                                                                       ]],
@@ -35,11 +35,11 @@ return {
         name = "catppuccin",
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme("catppuccin")
+            vim.cmd.colorscheme "catppuccin"
         end,
     },
     {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
-    }
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
 }
