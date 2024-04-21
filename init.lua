@@ -186,10 +186,10 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+-- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+-- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+-- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- My custom keymaps
 vim.keymap.set('n', '<C-s>', '<CMD> w <CR>', { desc = 'save file' })
@@ -202,8 +202,8 @@ vim.keymap.set('n', '<M-j>', '<CMD>m +1<CR>==', { desc = 'Move selected block Do
 
 vim.keymap.set('v', '>', '>gv', { desc = 'indent' })
 vim.keymap.set('v', '<', '<gv', { desc = 'indent' })
-vim.keymap.set('v', '<M-k>', "<CMD>m '<-2<CR>gv=gv", { desc = 'Move selected block Up' })
-vim.keymap.set('v', '<M-j>', "<CMD>m '>+1<CR>gv=gv", { desc = 'Move selected block Down' })
+vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selected block Up' })
+vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selected block Down' })
 
 vim.keymap.set('i', '<C-s>', '<ESC><CMD> w <CR>', { desc = 'save file' })
 vim.keymap.set('i', '<M-k>', '<CMD>m -2<CR><C-o>==', { desc = 'Move selected block Up' })
@@ -554,7 +554,21 @@ require('lazy').setup({
             --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
             local servers = {
                 clangd = {},
-                -- gopls = {},
+                gopls = {
+                    cmd = { 'gopls' },
+                    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+                    settings = {
+                        gopls = {
+                            completeUnimported = true,
+                            usePlaceholders = true,
+                            analyses = {
+                                unusedparams = true,
+                            },
+                        },
+                        staticcheck = true,
+                        gofumpt = true,
+                    },
+                },
                 pyright = {},
                 rust_analyzer = {},
                 -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -638,6 +652,7 @@ require('lazy').setup({
             },
             formatters_by_ft = {
                 lua = { 'stylua' },
+                cpp = { 'clang-format' },
                 -- Conform can also run multiple formatters sequentially
                 python = { 'isort', 'black' },
                 --
