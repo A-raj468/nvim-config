@@ -29,6 +29,7 @@ return {
 
             -- Useful for getting pretty icons, but requires a Nerd Font.
             { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+            'andrew-george/telescope-themes',
         },
         config = function()
             -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -66,6 +67,18 @@ return {
                     ['ui-select'] = {
                         require('telescope.themes').get_dropdown(),
                     },
+                    themes = {
+                        -- (boolean) -> enable/disable live preview
+                        enable_live_preview = true,
+
+                        persist = {
+                            -- enable persisting last theme choice
+                            enabled = true,
+
+                            -- override path to file that execute colorscheme command
+                            path = vim.fn.stdpath 'config' .. '/lua/current-theme.lua',
+                        },
+                    },
                 },
             }
 
@@ -85,6 +98,7 @@ return {
             vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
             vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
             vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+            vim.keymap.set('n', '<leader>st', ':Telescope themes<CR>', { silent = true, desc = '[S]earch [T]heme' })
 
             -- Slightly advanced example of overriding default behavior and theme
             vim.keymap.set('n', '<leader>/', function()
@@ -111,4 +125,3 @@ return {
         end,
     },
 }
-
