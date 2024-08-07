@@ -11,7 +11,7 @@ return {
         event = 'VimEnter',
         branch = '0.1.x',
         dependencies = {
-            'nvim-lua/plenary.nvim',
+            { 'nvim-lua/plenary.nvim' },
             { -- If encountering errors, see telescope-fzf-native README for install instructions
                 'nvim-telescope/telescope-fzf-native.nvim',
 
@@ -29,7 +29,8 @@ return {
 
             -- Useful for getting pretty icons, but requires a Nerd Font.
             { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-            'andrew-george/telescope-themes',
+            { 'andrew-george/telescope-themes' },
+            { 'nvim-telescope/telescope-file-browser.nvim' },
         },
         config = function()
             -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -83,8 +84,9 @@ return {
             }
 
             -- Enable telescope extensions, if they are installed
-            pcall(require('telescope').load_extension, 'fzf')
-            pcall(require('telescope').load_extension, 'ui-select')
+            require('telescope').load_extension 'fzf'
+            require('telescope').load_extension 'ui-select'
+            require('telescope').load_extension 'file_browser'
 
             -- See `:help telescope.builtin`
             local builtin = require 'telescope.builtin'
@@ -122,6 +124,11 @@ return {
             vim.keymap.set('n', '<leader>sn', function()
                 builtin.find_files { cwd = vim.fn.stdpath 'config' }
             end, { desc = '[S]earch [N]eovim files' })
+
+            -- Telescope file browser
+            vim.keymap.set('n', '<space>fb', function()
+                require('telescope').extensions.file_browser.file_browser()
+            end, { desc = '[F]ile [B]rowser' })
         end,
     },
 }

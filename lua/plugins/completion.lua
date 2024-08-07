@@ -33,6 +33,7 @@ return {
         },
         config = function()
             -- See `:help cmp`
+            require 'custom.snippets'
             local cmp = require 'cmp'
             local luasnip = require 'luasnip'
             local lspkind = require 'lspkind'
@@ -41,7 +42,7 @@ return {
             cmp.setup {
                 formatting = {
                     format = lspkind.cmp_format {
-                        mode = 'symbol', -- show only symbol annotations
+                        mode = 'symbol_text', -- show only symbol annotations
                         maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                         -- can also be a function to dynamically calculate max width such as
                         -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
@@ -100,7 +101,7 @@ return {
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                     { name = 'path' },
-                    { name = 'codeium' },
+                    -- { name = 'codeium' },
                 },
             }
         end,

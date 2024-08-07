@@ -203,6 +203,7 @@ return {
                 'clang-format',
                 'isort',
                 'black',
+                'prettier',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -234,6 +235,7 @@ return {
                 cpp = { 'clang-format' },
                 -- Conform can also run multiple formatters sequentially
                 python = { 'isort', 'black' },
+                markdown = { 'prettier' },
                 --
                 -- You can use a sub-list to tell conform to run *until* a formatter
                 -- is found.
