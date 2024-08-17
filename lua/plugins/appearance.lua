@@ -43,6 +43,14 @@ return {
         },
     },
 
+    {
+        'rebelot/kanagawa.nvim',
+        priority = 1000,
+        init = function()
+            vim.cmd.hi 'Comment gui=italic'
+        end,
+    },
+
     -- Highlight todo, notes, etc in comments
     {
         'folke/todo-comments.nvim',
