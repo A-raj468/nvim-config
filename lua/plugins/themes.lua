@@ -1,13 +1,5 @@
 return {
-    -- Status line
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require('lualine').setup {}
-        end,
-    },
-
+    -- Themes
     {
         'catppuccin/nvim',
         name = 'catppuccin',
@@ -49,17 +41,5 @@ return {
         init = function()
             vim.cmd.hi 'Comment gui=italic'
         end,
-    },
-
-    -- Highlight todo, notes, etc in comments
-    {
-        'folke/todo-comments.nvim',
-        event = 'VimEnter',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-        },
-        opts = {
-            signs = true,
-        },
     },
 }

@@ -1,6 +1,6 @@
 return {
-    -- codeium
     {
+        -- AI completion
         'Exafunction/codeium.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim',
