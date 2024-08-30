@@ -52,7 +52,9 @@ return {
         config = function(_, opts)
             require('mini.files').setup(opts)
             vim.keymap.set('n', '<leader>fm', function()
-                require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
+                if not MiniFiles.close() then
+                    require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
+                end
             end, { desc = 'Mini: [F]ile [M]anager' })
         end,
     },
