@@ -15,6 +15,11 @@ return {
     },
 
     {
+        'echasnovski/mini.comment',
+        version = '*',
+    },
+
+    {
         -- Surround capabilities
         'echasnovski/mini.surround',
         version = '*',

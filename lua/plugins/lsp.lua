@@ -69,6 +69,7 @@ return {
 
             local servers = {
                 clangd = {},
+
                 gopls = {
                     cmd = { 'gopls' },
                     filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
@@ -84,8 +85,6 @@ return {
                         gofumpt = true,
                     },
                 },
-                pyright = {},
-                rust_analyzer = {},
 
                 lua_ls = {
                     settings = {
@@ -104,6 +103,10 @@ return {
                         },
                     },
                 },
+
+                pyright = {},
+
+                rust_analyzer = {},
             }
 
             require('mason').setup()
