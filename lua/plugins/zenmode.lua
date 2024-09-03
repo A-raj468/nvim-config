@@ -4,7 +4,7 @@ return {
         'folke/zen-mode.nvim',
         opts = {},
         init = function()
-            vim.keymap.set('n', '<leader>zm', ':ZenMode<CR>', { desc = 'Toggle [Z]en[M]ode' })
+            vim.keymap.set('n', '<leader>zm', require('zen-mode').toggle, { desc = 'Toggle [Z]en[M]ode' })
         end,
     },
 }
