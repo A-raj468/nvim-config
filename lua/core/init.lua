@@ -1,0 +1,5 @@
+require 'core.option'
+require 'core.keymap'
+require 'core.autocmd'
+require 'core.lazy'
+require 'core.current-theme'

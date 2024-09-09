@@ -29,7 +29,7 @@ return {
                         persist = {
                             enabled = true,
 
-                            path = vim.fn.stdpath 'config' .. '/lua/current-theme.lua',
+                            path = vim.fn.stdpath 'config' .. '/lua/core/current-theme.lua',
                         },
                     },
                 },

@@ -13,6 +13,7 @@ return {
                 'html',
                 'lua',
                 'markdown',
+                'markdown_inline',
                 'python',
                 'vim',
                 'vimdoc',
