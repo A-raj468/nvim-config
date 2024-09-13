@@ -1,5 +1,6 @@
 return {
-    { -- Nvim dap for debigging
+    {
+        -- Nvim dap for debugging
         'mfussenegger/nvim-dap',
         dependencies = {
             'rcarriga/nvim-dap-ui',

@@ -10,6 +10,15 @@ return {
     },
 
     {
+        'rose-pine/neovim',
+        name = 'rose-pine',
+        priority = 1000,
+        init = function()
+            vim.cmd.hi 'Comment gui=italic'
+        end,
+    },
+
+    {
         'folke/tokyonight.nvim',
         priority = 1000,
         init = function()

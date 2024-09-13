@@ -19,7 +19,6 @@ return {
             },
             presets = { inc_rename = true },
         },
-
         keys = {
             {
                 '<leader>dn',

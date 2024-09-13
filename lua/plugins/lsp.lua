@@ -107,6 +107,13 @@ return {
                 pyright = {},
 
                 rust_analyzer = {},
+
+                typos_lsp = {
+                    cmd_env = { RUST_LOG = 'error' },
+                    init_options = {
+                        diagnosticSeverity = 'Hint',
+                    },
+                },
             }
 
             require('mason').setup()
