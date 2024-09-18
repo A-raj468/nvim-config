@@ -27,6 +27,18 @@ return {
             luasnip.config.setup {}
 
             cmp.setup {
+                sources = {
+                    { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
+                    { name = 'path' },
+                    { name = 'codeium' },
+                },
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)
+                    end,
+                },
+                completion = { completeopt = 'menu,menuone,noinsert' },
                 formatting = {
                     format = lspkind.cmp_format {
                         mode = 'symbol_text',
@@ -36,12 +48,6 @@ return {
                         symbol_map = { Codeium = '' },
                     },
                 },
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
-                },
-                completion = { completeopt = 'menu,menuone,noinsert' },
                 mapping = cmp.mapping.preset.insert {
                     ['<C-n>'] = cmp.mapping.select_next_item(),
                     ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -57,12 +63,6 @@ return {
                             luasnip.jump(-1)
                         end
                     end, { 'i', 's' }),
-                },
-                sources = {
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
-                    { name = 'path' },
-                    { name = 'codeium' },
                 },
             }
         end,

@@ -18,15 +18,13 @@ return {
 
             require('mason-nvim-dap').setup {
                 automatic_setup = true,
-
-                -- You can provide additional configuration to the handlers,
-                -- see mason-nvim-dap README for more information
-                handlers = {},
-
                 ensure_installed = {
                     'delve',
                     'codelldb',
                 },
+                -- You can provide additional configuration to the handlers,
+                -- see mason-nvim-dap README for more information
+                handlers = {},
             }
 
             -- Basic debugging keymaps, feel free to change to your liking!
