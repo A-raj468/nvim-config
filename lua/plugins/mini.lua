@@ -73,33 +73,4 @@ return {
             }
         end,
     },
-
-    {
-        -- File manager
-        'echasnovski/mini.files',
-        version = '*',
-        opts = {
-            mappings = {
-                go_in = '',
-                go_out = '',
-                go_in_plus = '<cr>',
-                go_out_plus = '-',
-            },
-            windows = {
-                max_number = 2,
-                preview = true,
-                width_focus = 50,
-                width_preview = 50,
-            },
-        },
-        config = function(_, opts)
-            require('mini.files').setup(opts)
-            vim.keymap.set('n', '<leader>fm', function()
-                local MiniFiles = require 'mini.files'
-                if not MiniFiles.close() then
-                    require('mini.files').open(vim.api.nvim_buf_get_name(0), true)
-                end
-            end, { desc = 'Mini: [F]ile [M]anager' })
-        end,
-    },
 }
