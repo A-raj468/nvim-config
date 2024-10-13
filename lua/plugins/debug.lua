@@ -22,8 +22,6 @@ return {
                     'delve',
                     'codelldb',
                 },
-                -- You can provide additional configuration to the handlers,
-                -- see mason-nvim-dap README for more information
                 handlers = {},
             }
 
@@ -45,7 +43,6 @@ return {
             dap.listeners.before.event_terminated['dapui_config'] = dapui.close
             dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-            -- Install golang specific config
             require('dap-go').setup()
             require('dap-python').setup '/home/maxi/.config/nvim/.virtualenvs/debugpy/bin/python'
         end,
