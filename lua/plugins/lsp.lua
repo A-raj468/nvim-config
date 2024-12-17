@@ -104,7 +104,7 @@ return {
                 'clang-format',
                 'isort',
                 'black',
-                'prettier',
+                'prettierd',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
             require('mason-lspconfig').setup {

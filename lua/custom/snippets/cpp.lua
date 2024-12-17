@@ -31,4 +31,31 @@ ls.add_snippets('cpp', {
             { i(1) }
         )
     ),
+    s(
+        'advent_template',
+        fmt(
+            [[
+    #include <iostream>
+    #include <fstream>
+
+    using namespace std;
+
+    int main(int argc, char* argv[]){{
+        if (argc < 2) {
+            std::cerr << "Usage: " << argv[0] << " <input_filename>\n";
+            return 1;
+        }
+        std::string filename = argv[1];
+        std::ifstream in(filename);
+        if (!in.is_open()) {
+            std::cerr << "Cannot open file: " << filename << "\n";
+            return 1;
+        }
+        {}
+        return 0;
+    }}
+        ]],
+            { i(1) }
+        )
+    ),
 })
