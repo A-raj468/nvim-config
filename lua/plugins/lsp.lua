@@ -48,6 +48,8 @@ return {
             capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
             local servers = {
+                cmake = {},
+
                 clangd = {},
 
                 gopls = {
@@ -101,10 +103,12 @@ return {
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua',
+                'cmakelang',
                 'clang-format',
                 'isort',
                 'black',
                 'prettierd',
+                'shfmt',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
             require('mason-lspconfig').setup {
