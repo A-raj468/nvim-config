@@ -1,3 +1,10 @@
+local enabled = false
+-- enabled = true
+
+if not enabled then
+    return {}
+end
+
 return {
     {
         -- AI completion
