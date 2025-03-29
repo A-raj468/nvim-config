@@ -13,8 +13,6 @@ vim.opt.expandtab = true
 
 vim.opt.mouse = 'a'
 
-vim.opt.wrap = false
-
 vim.opt.showmode = false
 
 vim.opt.clipboard = 'unnamedplus'

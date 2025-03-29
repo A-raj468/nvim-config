@@ -20,9 +20,15 @@ return {
                 automatic_setup = true,
                 ensure_installed = {
                     'delve',
-                    'codelldb',
+                    'cpptools',
                 },
                 handlers = {},
+            }
+
+            dap.adapters.cppdbg = {
+                id = 'cppdbg',
+                type = 'executable',
+                command = vim.fn.stdpath 'data' .. '/mason/bin/OpenDebugAD7',
             }
 
             -- Basic debugging keymaps, feel free to change to your liking!
