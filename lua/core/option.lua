@@ -45,3 +45,5 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 
 vim.opt.hlsearch = true
+
+vim.cmd 'filetype plugin on'
