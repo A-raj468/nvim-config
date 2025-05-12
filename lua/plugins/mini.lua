@@ -14,6 +14,40 @@ return {
     },
 
     {
+        'echasnovski/mini.keymap',
+        version = false,
+        config = function()
+            local keymap = require 'mini.keymap'
+            keymap.setup {}
+            local map_combo = keymap.map_combo
+
+            -- Support most common modes. This can also contain 't', but would
+            -- only mean to press `<Esc>` inside terminal.
+            local mode = { 'i', 'c', 'x', 's' }
+            map_combo(mode, 'jk', '<BS><BS><Esc>')
+
+            -- To not have to worry about the order of keys, also map "kj"
+            map_combo(mode, 'kj', '<BS><BS><Esc>')
+
+            -- Escape into Normal mode from Terminal mode
+            map_combo('t', 'jk', '<BS><BS><C-\\><C-n>')
+            map_combo('t', 'kj', '<BS><BS><C-\\><C-n>')
+
+            local notify_many_keys = function(key)
+                local lhs = string.rep(key, 5)
+                local action = function()
+                    vim.notify('Too many ' .. key)
+                end
+                require('mini.keymap').map_combo({ 'n', 'x' }, lhs, action)
+            end
+            notify_many_keys 'h'
+            notify_many_keys 'j'
+            notify_many_keys 'k'
+            notify_many_keys 'l'
+        end,
+    },
+
+    {
         -- Inhanced textobjects for a/i motions
         'echasnovski/mini.ai',
         version = '*',
@@ -35,23 +69,6 @@ return {
                 symbol = '│',
             }
         end,
-    },
-
-    {
-        -- Surround capabilities
-        'echasnovski/mini.surround',
-        version = '*',
-        opts = {
-            mappings = {
-                add = 'gsa', -- Add surrounding in Normal and Visual modes
-                delete = 'gsd', -- Delete surrounding
-                find = 'gsf', -- Find surrounding (to the right)
-                find_left = 'gsF', -- Find surrounding (to the left)
-                highlight = 'gsh', -- Highlight surrounding
-                replace = 'gsr', -- Replace surrounding
-                update_n_lines = 'gsn', -- Update `n_lines`
-            },
-        },
     },
 
     {
