@@ -9,7 +9,7 @@ return {
                 { '<leader>d', group = '[D]ocument' },
                 { '<leader>s', group = '[S]earch' },
                 { '<leader>w', group = '[W]orkspace' },
-                { '<leader>t', group = '[T]imer' },
+                { '<leader>t', group = '[T]oggle' },
                 {
                     mode = { 'n', 'v' },
                     { '<leader>h', group = 'Git [H]unk' },
