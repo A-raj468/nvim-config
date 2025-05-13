@@ -1,9 +1,8 @@
 return {
     {
         'gbprod/substitute.nvim',
-        config = function(_, opts)
+        init = function()
             local substitute = require 'substitute'
-            substitute.setup(opts)
             vim.keymap.set('n', 's', substitute.operator, { noremap = true })
             vim.keymap.set('n', 'ss', substitute.line, { noremap = true })
             vim.keymap.set('n', 'S', substitute.eol, { noremap = true })
