@@ -16,8 +16,6 @@ return {
                 group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
                 desc = 'LSP actions',
                 callback = function(event)
-                    local opts = { buffer = event.buf }
-
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = event.buf, desc = 'LSP: Hover Documentation' })
                     vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { buffer = event.buf, desc = 'LSP: [G]oto [D]efinition' })
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = event.buf, desc = 'LSP: [G]oto [D]eclaration' })
@@ -116,6 +114,15 @@ return {
                 lua_ls = {
                     settings = {
                         Lua = {
+                            runtime = {
+                                version = 'LuaJIT',
+                            },
+                            workspace = {
+                                checkThirdParty = false,
+                                library = {
+                                    vim.env.VIMRUNTIME,
+                                },
+                            },
                             completion = {
                                 callSnippet = 'Replace',
                             },
@@ -148,17 +155,17 @@ return {
                 'shfmt',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-            require('mason-lspconfig').setup {
-                ensure_installed = {},
-                automatic_installation = false,
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                        require('lspconfig')[server_name].setup(server)
-                    end,
-                },
-            }
+
+            local enable = function(server_name)
+                local server = servers[server_name] or {}
+                server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+                vim.lsp.config(server_name, server)
+                vim.lsp.enable(server_name)
+            end
+            for server_name, server in pairs(servers) do
+                enable(server_name)
+            end
+
             require('inc_rename').setup {}
             require('fidget').setup {}
         end,
