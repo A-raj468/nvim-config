@@ -16,16 +16,16 @@ return {
                 desc = 'LSP actions',
                 callback = function(event)
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = event.buf, desc = 'LSP: Hover Documentation' })
-                    vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { buffer = event.buf, desc = 'LSP: [G]oto [D]efinition' })
-                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = event.buf, desc = 'LSP: [G]oto [D]eclaration' })
-                    vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, { buffer = event.buf, desc = 'LSP: [G]oto [I]mplementation' })
-                    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { buffer = event.buf, desc = 'LSP: [G]oto [R]eferences' })
+                    vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { buffer = event.buf, desc = 'LSP: Goto Definition' })
+                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = event.buf, desc = 'LSP: Goto Declaration' })
+                    vim.keymap.set('n', 'gri', require('telescope.builtin').lsp_implementations, { buffer = event.buf, desc = 'LSP: Goto Implementation' })
+                    vim.keymap.set('n', 'grr', require('telescope.builtin').lsp_references, { buffer = event.buf, desc = 'LSP: Goto References' })
                     vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: Signature Help' })
-                    vim.keymap.set('n', '<leader>D', require('telescope.builtin').lsp_type_definitions, { buffer = event.buf, desc = 'LSP: Type [D]efinition' })
-                    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = event.buf, desc = 'LSP: [C]ode [A]ction' })
+                    vim.keymap.set('n', '<leader>D', require('telescope.builtin').lsp_type_definitions, { buffer = event.buf, desc = 'LSP: Type Definition' })
+                    vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, { buffer = event.buf, desc = 'LSP: Code Action' })
                     vim.keymap.set('n', 'grn', function()
                         return ':IncRename ' .. vim.fn.expand '<cword>'
-                    end, { buffer = event.buf, expr = true, desc = 'LSP: inc [R]e[n]ame' })
+                    end, { buffer = event.buf, expr = true, desc = 'LSP: Rename' })
 
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.
