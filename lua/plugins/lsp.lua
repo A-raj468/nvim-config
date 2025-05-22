@@ -5,6 +5,7 @@ return {
         dependencies = {
             'nvim-telescope/telescope.nvim',
             'williamboman/mason.nvim',
+            'mason-org/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             'j-hui/fidget.nvim',
             'smjonas/inc-rename.nvim',
@@ -90,7 +91,7 @@ return {
             local capabilities = require('blink.cmp').get_lsp_capabilities()
 
             local servers = {
-                ['cmake-language-server'] = {},
+                cmake = {},
 
                 clangd = {},
 
@@ -110,7 +111,7 @@ return {
                     },
                 },
 
-                ['lua-language-server'] = {
+                lua_ls = {
                     settings = {
                         Lua = {
                             runtime = {
@@ -131,9 +132,9 @@ return {
 
                 pyright = {},
 
-                ['rust-analyzer'] = {},
+                rust_analyzer = {},
 
-                ['typos-lsp'] = {
+                typos_lsp = {
                     cmd_env = { RUST_LOG = 'error' },
                     init_options = {
                         diagnosticSeverity = 'Hint',
@@ -142,6 +143,10 @@ return {
             }
 
             require('mason').setup {}
+            require('mason-lspconfig').setup {
+                ensure_installed = {},
+                automatic_installation = false,
+            }
 
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
