@@ -7,7 +7,6 @@ return {
             'nvim-neotest/nvim-nio',
 
             'williamboman/mason.nvim',
-            'jay-babu/mason-nvim-dap.nvim',
 
             'leoluz/nvim-dap-go',
             'mfussenegger/nvim-dap-python',
@@ -15,15 +14,6 @@ return {
         config = function()
             local dap = require 'dap'
             local dapui = require 'dapui'
-
-            require('mason-nvim-dap').setup {
-                automatic_setup = true,
-                ensure_installed = {
-                    'delve',
-                    'cpptools',
-                },
-                handlers = {},
-            }
 
             dap.adapters.cppdbg = {
                 id = 'cppdbg',

@@ -100,6 +100,7 @@ return {
 
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
+                -- formatters
                 'stylua',
                 'cmakelang',
                 'clang-format',
@@ -107,6 +108,10 @@ return {
                 'black',
                 'prettierd',
                 'shfmt',
+
+                -- debuggers
+                'delve',
+                'cpptools',
             })
 
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
