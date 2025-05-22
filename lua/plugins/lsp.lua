@@ -1,11 +1,9 @@
 return {
     {
-        -- LSP Configuration & Plugins
-        'neovim/nvim-lspconfig',
+        -- LSP Setup
+        'williamboman/mason.nvim',
         dependencies = {
             'nvim-telescope/telescope.nvim',
-            'williamboman/mason.nvim',
-            'mason-org/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             'j-hui/fidget.nvim',
             'smjonas/inc-rename.nvim',
@@ -91,62 +89,14 @@ return {
             local capabilities = require('blink.cmp').get_lsp_capabilities()
 
             local servers = {
-                cmake = {},
-
-                clangd = {},
-
-                gopls = {
-                    cmd = { 'gopls' },
-                    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-                    settings = {
-                        gopls = {
-                            completeUnimported = true,
-                            usePlaceholders = true,
-                            analyses = {
-                                unusedparams = true,
-                            },
-                        },
-                        staticcheck = true,
-                        gofumpt = true,
-                    },
-                },
-
-                lua_ls = {
-                    settings = {
-                        Lua = {
-                            runtime = {
-                                version = 'LuaJIT',
-                            },
-                            workspace = {
-                                checkThirdParty = false,
-                                library = {
-                                    vim.env.VIMRUNTIME,
-                                },
-                            },
-                            completion = {
-                                callSnippet = 'Replace',
-                            },
-                        },
-                    },
-                },
-
-                pyright = {},
-
-                rust_analyzer = {},
-
-                typos_lsp = {
-                    cmd_env = { RUST_LOG = 'error' },
-                    init_options = {
-                        diagnosticSeverity = 'Hint',
-                    },
-                },
+                ['clangd'] = require 'lsp-config.clangd',
+                ['cmake-language-server'] = require 'lsp-config.cmake_ls',
+                ['gopls'] = require 'lsp-config.gopls',
+                ['lua-language-server'] = require 'lsp-config.lua_ls',
+                ['pyright'] = require 'lsp-config.pyright',
+                ['typos-lsp'] = require 'lsp-config.typos_lsp',
             }
-
             require('mason').setup {}
-            require('mason-lspconfig').setup {
-                ensure_installed = {},
-                automatic_installation = false,
-            }
 
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
@@ -158,6 +108,7 @@ return {
                 'prettierd',
                 'shfmt',
             })
+
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
             local enable = function(server_name)
