@@ -1,5 +1,6 @@
 return {
     {
+        -- Substitute
         'gbprod/substitute.nvim',
         init = function()
             local substitute = require 'substitute'

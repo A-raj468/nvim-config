@@ -1,5 +1,6 @@
 return {
     {
+        -- Helpdoc renderer
         'OXY2DEV/helpview.nvim',
         lazy = false,
         dependencies = {

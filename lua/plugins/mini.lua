@@ -14,6 +14,7 @@ return {
     },
 
     {
+        -- Smart keymaps
         'echasnovski/mini.keymap',
         version = false,
         init = function()

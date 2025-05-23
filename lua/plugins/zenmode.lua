@@ -1,6 +1,6 @@
 return {
-    -- Lua
     {
+        -- Zen mode
         'folke/zen-mode.nvim',
         opts = {},
         init = function()

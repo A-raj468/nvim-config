@@ -1,5 +1,6 @@
 return {
     {
+        -- Harpoon for better file navigations
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
         dependencies = {

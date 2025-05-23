@@ -1,13 +1,22 @@
 return {
     {
+        -- Better file folding
         'kevinhwang91/nvim-ufo',
         dependencies = {
             'kevinhwang91/promise-async',
         },
         opts = {
             provider_selector = function(bufnr, filetype, buftype)
-                return { 'lsp', 'indent' }
+                return { 'treesitter', 'indent' }
             end,
+            close_fold_kinds_for_ft = {
+                cpp = {
+                    'function_definition',
+                    'comment',
+                    'preproc_include',
+                    'initializer_list',
+                },
+            },
             fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
                 local newVirtText = {}
                 local suffix = (' 󰁂 %d '):format(endLnum - lnum)
