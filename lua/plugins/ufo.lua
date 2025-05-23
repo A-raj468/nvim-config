@@ -16,6 +16,9 @@ return {
                     'preproc_include',
                     'initializer_list',
                 },
+                lua = {
+                    'function_definition',
+                },
             },
             fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
                 local newVirtText = {}
