@@ -7,6 +7,13 @@ return {
     },
 
     {
+        -- Beaitiful icons
+        'echasnovski/mini.surround',
+        version = '*',
+        opts = {},
+    },
+
+    {
         -- Inhances commenting
         'echasnovski/mini.comment',
         version = '*',

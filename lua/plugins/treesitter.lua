@@ -2,9 +2,6 @@ return {
     {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
         build = ':TSUpdate',
         opts = {
             ensure_installed = {
@@ -35,48 +32,6 @@ return {
                     node_incremental = 'n',
                     node_decremental = 'N',
                     scope_incremental = 'v',
-                },
-            },
-
-            textobjects = {
-                select = {
-                    enable = true,
-                    lookahead = true,
-                    keymaps = {
-                        ['af'] = '@function.outer',
-                        ['if'] = '@function.inner',
-                        ['ac'] = '@class.outer',
-                        ['ic'] = '@class.inner',
-                        ['a,'] = '@parameter.outer',
-                        ['i,'] = '@parameter.inner',
-                    },
-                },
-                move = {
-                    enable = true,
-                    set_jumps = true,
-                    goto_next_start = {
-                        [']f'] = '@function.outer',
-                        [']c'] = '@class.outer',
-                        ['],'] = '@parameter.inner',
-                    },
-                    goto_next_end = {
-                        [']F'] = '@function.outer',
-                        [']C'] = '@class.outer',
-                    },
-                    goto_previous_start = {
-                        ['[f'] = '@function.outer',
-                        ['[c'] = '@class.outer',
-                        ['[,'] = '@parameter.inner',
-                    },
-                    goto_previous_end = {
-                        ['[F'] = '@function.outer',
-                        ['[C'] = '@class.outer',
-                    },
-                },
-                swap = {
-                    enable = true,
-                    swap_next = { ['>,'] = '@parameter.inner' },
-                    swap_previous = { ['<,'] = '@parameter.inner' },
                 },
             },
         },
