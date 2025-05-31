@@ -25,11 +25,14 @@ return {
                         require('telescope.themes').get_dropdown(),
                     },
                     themes = {
-                        enable_live_preview = true,
                         persist = {
                             enabled = true,
-
                             path = vim.fn.stdpath 'config' .. '/lua/core/current-theme.lua',
+                        },
+                        mappings = {
+                            down = '<C-n>',
+                            up = '<C-p>',
+                            accept = '<C-y>',
                         },
                     },
                 },
@@ -37,6 +40,7 @@ return {
 
             require('telescope').load_extension 'fzf'
             require('telescope').load_extension 'ui-select'
+            require('telescope').load_extension 'themes'
 
             local builtin = require 'telescope.builtin'
             vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[Find] [K]eymaps' })
