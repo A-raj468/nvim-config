@@ -2,6 +2,9 @@ return {
     {
         -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'OXY2DEV/markview.nvim',
+        },
         build = ':TSUpdate',
         opts = {
             ensure_installed = {
@@ -15,6 +18,7 @@ return {
                 'markdown',
                 'markdown_inline',
                 'python',
+                'regex',
                 'vim',
                 'vimdoc',
             },
