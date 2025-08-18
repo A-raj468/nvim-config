@@ -9,5 +9,6 @@ return {
             vim.keymap.set('n', 'S', substitute.eol, { noremap = true })
             vim.keymap.set('x', 's', substitute.visual, { noremap = true })
         end,
+        opts = {},
     },
 }

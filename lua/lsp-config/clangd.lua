@@ -58,7 +58,13 @@ local function symbol_info()
 end
 
 return {
-    cmd = { 'clangd' },
+    cmd = {
+        'clangd',
+        '--background-index',
+        '--clang-tidy',
+        '--completion-style=bundled',
+        '--header-insertion=iwyu',
+    },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
     root_markers = {
         '.clangd',
