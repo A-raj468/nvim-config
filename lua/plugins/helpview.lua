@@ -1,11 +1,8 @@
 return {
-    {
+    ['nvim-treesitter'] = { 'nvim-treesitter/nvim-treesitter' },
+    helpview = {
         -- Helpdoc renderer
         'OXY2DEV/helpview.nvim',
-        lazy = false,
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter',
-        },
-        opt = {},
+        args = {},
     },
 }

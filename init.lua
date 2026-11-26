@@ -1,1 +1,1 @@
-require 'core.init'
+require 'core'

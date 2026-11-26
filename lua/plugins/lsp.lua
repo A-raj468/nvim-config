@@ -1,15 +1,20 @@
 return {
-    {
+    fidget = {
+        'j-hui/fidget.nvim',
+        args = {},
+    },
+    inc_rename = {
+        'smjonas/inc-rename.nvim',
+        args = {},
+    },
+    telescope = { 'nvim-telescope/telescope.nvim' },
+    ['nvim-lspconfig'] = { 'neovim/nvim-lspconfig' },
+    ['mason-lspconfig'] = { 'mason-org/mason-lspconfig.nvim' },
+    ['mason-tool-installer'] = { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+    mason = {
         -- LSP Setup
-        'williamboman/mason.nvim',
-        dependencies = {
-            'nvim-telescope/telescope.nvim',
-            'WhoIsSethDaniel/mason-tool-installer.nvim',
-            'j-hui/fidget.nvim',
-            'smjonas/inc-rename.nvim',
-            'saghen/blink.cmp',
-        },
-        config = function()
+        'mason-org/mason.nvim',
+        after = function()
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
                 desc = 'LSP actions',
@@ -57,77 +62,57 @@ return {
                 end,
             })
 
-            -- Diagnostic Config
-            -- See :help vim.diagnostic.Opts
-            vim.diagnostic.config {
-                severity_sort = true,
-                float = { border = 'rounded', source = 'if_many' },
-                underline = { severity = vim.diagnostic.severity.ERROR },
-                signs = vim.g.have_nerd_font and {
-                    text = {
-                        [vim.diagnostic.severity.ERROR] = '󰅚 ',
-                        [vim.diagnostic.severity.WARN] = '󰀪 ',
-                        [vim.diagnostic.severity.INFO] = '󰋽 ',
-                        [vim.diagnostic.severity.HINT] = '󰌶 ',
-                    },
-                } or {},
-                virtual_text = {
-                    source = 'if_many',
-                    spacing = 2,
-                    format = function(diagnostic)
-                        local diagnostic_message = {
-                            [vim.diagnostic.severity.ERROR] = diagnostic.message,
-                            [vim.diagnostic.severity.WARN] = diagnostic.message,
-                            [vim.diagnostic.severity.INFO] = diagnostic.message,
-                            [vim.diagnostic.severity.HINT] = diagnostic.message,
-                        }
-                        return diagnostic_message[diagnostic.severity]
-                    end,
-                },
-            }
-
-            local capabilities = require('blink.cmp').get_lsp_capabilities()
-
             local servers = {
-                ['clangd'] = require 'lsp-config.clangd',
-                ['cmake-language-server'] = require 'lsp-config.cmake_ls',
-                ['gopls'] = require 'lsp-config.gopls',
-                ['lua-language-server'] = require 'lsp-config.lua_ls',
-                ['pyright'] = require 'lsp-config.pyright',
-                ['typos-lsp'] = require 'lsp-config.typos_lsp',
+                stylua = {},
+                lua_ls = {
+                    on_init = function(client)
+                        client.server_capabilities.documentFormattingProvider = false
+
+                        if client.workspace_folders then
+                            local path = client.workspace_folders[1].name
+                            if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
+                                return
+                            end
+                        end
+
+                        local current_settings = client.config.settings --[[@as lspconfig.settings.lua_ls]]
+                        client.config.settings.Lua = vim.tbl_deep_extend('force', current_settings.Lua, {
+                            runtime = {
+                                version = 'LuaJIT',
+                                path = { 'lua/?.lua', 'lua/?/init.lua' },
+                            },
+                            workspace = {
+                                checkThirdParty = false,
+                                -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
+                                --  See https://github.com/neovim/nvim-lspconfig/issues/3189
+                                library = vim.api.nvim_get_runtime_file('', true),
+                            },
+                        })
+                    end,
+                    ---@type lspconfig.settings.lua_ls
+                    settings = {
+                        Lua = {
+                            format = { enable = false },
+                        },
+                    },
+                },
+                clangd = {},
+                cmake = {},
+                ruff = {},
+                typos_lsp = {},
+                -- gopls = {},
             }
             require('mason').setup {}
 
-            local ensure_installed = vim.tbl_keys(servers or {})
-            vim.list_extend(ensure_installed, {
-                -- formatters
-                'stylua',
-                'cmakelang',
-                'clang-format',
-                'isort',
-                'black',
-                'prettierd',
-                'shfmt',
+            -- Translates between nvim-lspconfig server names and mason.nvim package names (e.g. lua_ls <-> lua-language-server)
+            require('mason-lspconfig').setup {
+                automatic_enable = false,
+            }
 
-                -- debuggers
-                'delve',
-                'cpptools',
-            })
-
-            require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-            local enable = function(server_name)
-                local server = servers[server_name] or {}
-                server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                vim.lsp.config(server_name, server)
-                vim.lsp.enable(server_name)
+            for name, server in pairs(servers) do
+                vim.lsp.config(name, server)
+                vim.lsp.enable(name)
             end
-            for server_name, server in pairs(servers) do
-                enable(server_name)
-            end
-
-            require('inc_rename').setup {}
-            require('fidget').setup {}
         end,
     },
 }

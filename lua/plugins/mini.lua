@@ -1,61 +1,49 @@
 return {
-    {
-        -- Beaitiful icons
-        'echasnovski/mini.icons',
-        version = '*',
-        opts = {},
-    },
+    ['mini.nvim'] = {
+        -- [[ mini.nvim ]]
+        --  A collection of various small independent plugins/modules
+        'nvim-mini/mini.nvim',
+        after = function()
+            -- If a nerd font is available, load the icons module for pretty icons in various plugins.
+            if vim.g.have_nerd_font then
+                require('mini.icons').setup()
+                -- Used for backwards compatibility with plugins that require `nvim-web-devicons` (e.g. telescope.nvim)
+                MiniIcons.mock_nvim_web_devicons()
+            end
 
-    {
-        -- Beaitiful icons
-        'echasnovski/mini.surround',
-        version = '*',
-        opts = {},
-    },
+            -- Better Around/Inside textobjects
+            require('mini.ai').setup {
+                -- NOTE: Avoid conflicts with the built-in incremental selection mappings on Neovim>=0.12 (see `:help treesitter-incremental-selection`)
+                mappings = {
+                    around_next = 'aa',
+                    inside_next = 'ii',
+                },
+                n_lines = 500,
+            }
 
-    {
-        -- Inhances commenting
-        'echasnovski/mini.comment',
-        version = '*',
-        opts = {},
-    },
+            -- Add/delete/replace surroundings (brackets, quotes, etc.)
+            require('mini.surround').setup()
 
-    {
-        -- Smart keymaps
-        'echasnovski/mini.keymap',
-        version = false,
-        init = function()
+            -- Simple and easy statusline.
+            local statusline = require 'mini.statusline'
+            statusline.setup { use_icons = vim.g.have_nerd_font }
+            ---@diagnostic disable-next-line: duplicate-set-field
+            statusline.section_location = function()
+                return '%2l:%-2v'
+            end
+
+            -- Smart keymaps
             local keymap = require 'mini.keymap'
             local map_combo = keymap.map_combo
 
-            -- Support most common modes. This can also contain 't', but would
-            -- only mean to press `<Esc>` inside terminal.
             local mode = { 'i', 'c', 'x', 's' }
             map_combo(mode, 'jk', '<BS><BS><Esc>')
-
-            -- To not have to worry about the order of keys, also map "kj"
             map_combo(mode, 'kj', '<BS><BS><Esc>')
 
             -- Escape into Normal mode from Terminal mode
             map_combo('t', 'jk', '<BS><BS><C-\\><C-n>')
             map_combo('t', 'kj', '<BS><BS><C-\\><C-n>')
-        end,
-    },
 
-    {
-        -- Inhanced textobjects for a/i motions
-        'echasnovski/mini.ai',
-        version = '*',
-        opts = {
-            n_lines = 500,
-        },
-    },
-
-    {
-        -- Indentline for scope
-        'echasnovski/mini.indentscope',
-        version = '*',
-        config = function()
             local indentscope = require 'mini.indentscope'
             indentscope.setup {
                 draw = {
@@ -63,14 +51,7 @@ return {
                 },
                 symbol = '│',
             }
-        end,
-    },
 
-    {
-        -- Highlights certain patterns
-        'echasnovski/mini.hipatterns',
-        version = '*',
-        config = function()
             local hipatterns = require 'mini.hipatterns'
             hipatterns.setup {
                 highlighters = {

@@ -1,24 +1,21 @@
 return {
-    {
+    plenary = { 'nvim-lua/plenary.nvim' },
+    ['mini.nvim'] = { 'nvim-mini/mini.nvim' },
+    ['telescope-ui-select'] = { 'nvim-telescope/telescope-ui-select.nvim' },
+    ['telescope-fzf-native'] = {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = function()
+            if vim.fn.executable 'make' ~= 1 then
+                return
+            end
+            return { 'make' }
+        end,
+    },
+    ['telescope-themes'] = { 'andrew-george/telescope-themes' },
+    telescope = {
         -- Fuzzy Finder (files, lsp, etc)
         'nvim-telescope/telescope.nvim',
-        event = 'VimEnter',
-        branch = '0.1.x',
-        dependencies = {
-            { 'nvim-lua/plenary.nvim' },
-            {
-                'nvim-telescope/telescope-fzf-native.nvim',
-                build = 'make',
-                cond = function()
-                    return vim.fn.executable 'make' == 1
-                end,
-            },
-            { 'nvim-telescope/telescope-ui-select.nvim' },
-
-            { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-            { 'andrew-george/telescope-themes' },
-        },
-        config = function()
+        after = function()
             require('telescope').setup {
                 extensions = {
                     ['ui-select'] = {
@@ -43,22 +40,25 @@ return {
             require('telescope').load_extension 'themes'
 
             local builtin = require 'telescope.builtin'
-            vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[Find] [K]eymaps' })
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
-            vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[Find] [S]elect Telescope' })
 
-            vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[Find] [R]esume' })
-            vim.keymap.set('n', '<leader>ft', ':Telescope themes<CR>', { silent = true, desc = '[Find] [T]heme' })
-            vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[Find] [D]iagnostics' })
-
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[Find] [F]iles' })
-            vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[f]ind [f]iles' })
 
             vim.keymap.set('n', '<leader>/', function()
                 builtin.current_buffer_fuzzy_find()
             end, { desc = '[/] Fuzzily find in current buffer' })
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[Find] [G]lobally' })
-            vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = '[Find] [C]urrent word' })
+            vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = '[f]ind [c]urrent word' })
+            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[f]ind [g]lobally' })
+
+            vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[f]ind [b]uffers' })
+
+            vim.keymap.set('n', '<leader>ft', ':Telescope themes<CR>', { noremap = true, silent = true, desc = '[f]ind [t]heme' })
+
+            vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[find] [r]esume' })
+            vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[f]ind [d]iagnostics' })
+
+            vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[f]ind [k]eymaps' })
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[f]ind [h]elp' })
+            vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[f]ind [s]elect telescope' })
         end,
     },
 }

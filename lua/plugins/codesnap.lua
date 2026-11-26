@@ -1,13 +1,14 @@
 return {
-    {
+    codesnap = {
         -- Create beautiful code screenshots
         'mistricky/codesnap.nvim',
-        build = 'make build_generator',
+        version = 'v2.0.5',
         keys = {
-            { '<leader>pc', ':CodeSnap<cr>', mode = 'x', desc = 'Save selected code snapshot into clipboard' },
-            { '<leader>ps', ':CodeSnapSave<cr>', mode = 'x', desc = 'Save selected code snapshot in ~/Pictures' },
+            { '<leader>pc', ':CodeSnap<cr>', mode = 'x', desc = '[p]icture: [c]opy code snapshot' },
+            { '<leader>pa', ':CodeSnapASCII<cr>', mode = 'x', desc = '[p]icture: copy code [a]SCII snapshot' },
+            { '<leader>ps', ':CodeSnapSave ', mode = 'x', desc = '[p]icture: [s]ave code snapshot' },
         },
-        opts = {
+        args = {
             save_path = '~/Pictures',
             has_breadcrumbs = true,
             breadcrumbs_separator = ' ❯ ',

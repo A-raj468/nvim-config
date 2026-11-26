@@ -1,8 +1,8 @@
 return {
-    {
+    conform = {
         -- Autoformat
         'stevearc/conform.nvim',
-        opts = {
+        args = {
             notify_on_error = true,
             format_on_save = {
                 timeout_ms = 500,

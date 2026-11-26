@@ -1,53 +1,40 @@
 return {
     -- Themes
-    {
+    catppuccin = {
         'catppuccin/nvim',
-        name = 'catppuccin',
-        priority = 1000,
-        init = function()
+        after = function()
             vim.cmd.hi 'Comment gui=italic'
         end,
     },
-
-    {
+    ['rose-pine'] = {
         'rose-pine/neovim',
-        name = 'rose-pine',
-        priority = 1000,
-        init = function()
+        after = function()
             vim.cmd.hi 'Comment gui=italic'
         end,
     },
-
-    {
+    tokyonight = {
         'folke/tokyonight.nvim',
-        priority = 1000,
-        init = function()
+        after = function()
             vim.cmd.hi 'Comment gui=italic'
         end,
     },
-
-    {
+    eldritch = {
         'eldritch-theme/eldritch.nvim',
-        priority = 1000,
-        opts = {},
-        init = function()
+        args = {},
+        after = function()
             vim.cmd.hi 'Comment gui=italic'
         end,
     },
-
-    {
+    cyberdream = {
         'scottmckendry/cyberdream.nvim',
-        priority = 1000,
-        opts = {
+        args = {
             transparent = false,
             italic_comments = true,
         },
     },
-
-    {
+    kanagawa = {
         'rebelot/kanagawa.nvim',
-        priority = 1000,
-        init = function()
+        after = function()
             vim.cmd.hi 'Comment gui=italic'
         end,
     },

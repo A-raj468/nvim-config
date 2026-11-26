@@ -1,8 +1,8 @@
 return {
-    {
+    ['nvim-tmux-navigation'] = {
         -- Nvim-tmux navigation
         'alexghergh/nvim-tmux-navigation',
-        opts = {
+        args = {
             keybindings = {
                 left = '<C-h>',
                 down = '<C-j>',

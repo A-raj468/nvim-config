@@ -1,146 +1,65 @@
-# nvim-config/
+# My neovim config
 
-<a href="https://dotfyle.com/A-raj468/nvim-config"><img src="https://dotfyle.com/A-raj468/nvim-config/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/A-raj468/nvim-config"><img src="https://dotfyle.com/A-raj468/nvim-config/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/A-raj468/nvim-config"><img src="https://dotfyle.com/A-raj468/nvim-config/badges/plugin-manager?style=flat" /></a>
+## Requirements
+- `nvim` - 0.12
 
-## Install Instructions
-
-> Install requires Neovim 0.9+. Always review the code before installing a configuration.
-
-Clone the repository and install the plugins:
-
-```sh
+## Install instructions
+Clone the repository and install the plugins
+```bash
 git clone git@github.com:A-raj468/nvim-config ~/.config/A-raj468/nvim-config
 ```
 
-Open Neovim with this config:
-
-```sh
+Open neovim with this config
+```bash
 NVIM_APPNAME=A-raj468/nvim-config/ nvim
 ```
 
-## Plugins
+## Installed plugins
+### LSP & Completion
+- [`blink.cmp`](https://github.com/saghen/blink.cmp)
+- [`conform`](https://github.com/stevearc/conform.nvim)
+- [`helpview`](https://github.com/OXY2DEV/helpview.nvim)
+- [`inc-rename`](https://github.com/smjonas/inc-rename.nvim)
+- [`luasnip`](https://github.com/L3MON4D3/LuaSnip)
+- [`markview`](https://github.com/OXY2DEV/markview.nvim)
+- [`mason`](https://github.com/mason-org/mason.nvim)
+- [`mason-lspconfig`](https://github.com/mason-org/mason-lspconfig.nvim)
+- [`mason-tool-installer`](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim)
+- [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig)
+- [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter)
 
-### ai
+### Git
+- [`gitsigns`](https://github.com/lewis6991/gitsigns.nvim)
+- [`lazygit`](https://github.com/kdheepak/lazygit.nvim)
 
-- [Exafunction/codeium.nvim](https://dotfyle.com/plugins/Exafunction/codeium.nvim)
+### Search
+- [`telescope`](https://github.com/nvim-telescope/telescope.nvim)
+- [`telescope-fzf-native`](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
+- [`telescope-themes`](https://github.com/andrewberty/telescope-themes)
+- [`telescope-ui-select`](https://github.com/nvim-telescope/telescope-ui-select.nvim)
 
-### colorscheme
+### Theme
+- [`catppuccin`](https://github.com/catppuccin/nvim)
+- [`cyberdream`](https://github.com/scottmckendry/cyberdream.nvim)
+- [`eldritch`](https://github.com/eldritch-theme/eldritch.nvim)
+- [`kanagawa`](https://github.com/rebelot/kanagawa.nvim)
+- [`rose-pine`](https://github.com/rose-pine/neovim)
+- [`tokyonight`](https://github.com/folke/tokyonight.nvim)
 
-- [folke/tokyonight.nvim](https://dotfyle.com/plugins/folke/tokyonight.nvim)
-- [catppuccin/nvim](https://dotfyle.com/plugins/catppuccin/nvim)
-- [rebelot/kanagawa.nvim](https://dotfyle.com/plugins/rebelot/kanagawa.nvim)
-- [scottmckendry/cyberdream.nvim](https://dotfyle.com/plugins/scottmckendry/cyberdream.nvim)
-- [eldritch-theme/eldritch.nvim](https://dotfyle.com/plugins/eldritch-theme/eldritch.nvim)
+### Utility
+- [`codesnap`](https://github.com/mistricky/codesnap.nvim)
+- [`mini.nvim`](https://github.com/nvim-mini/mini.nvim)
+- [`nvim-tmux-navigation`](https://github.com/alexghergh/nvim-tmux-navigation)
+- [`oil`](https://github.com/stevearc/oil.nvim)
+- [`plenary`](https://github.com/nvim-lua/plenary.nvim)
+- [`pomo`](https://github.com/A-raj468/pomo.nvim)
+- [`undotree`](https://github.com/mbbill/undotree)
+- [`which-key`](https://github.com/folke/which-key.nvim)
+- [`zen-mode`](https://github.com/folke/zen-mode.nvim)
 
-### comment
+### UI
+- [`fidget`](https://github.com/j-hui/fidget.nvim)
+- [`noice`](https://github.com/folke/noice.nvim)
+- [`notify`](https://github.com/rcarriga/nvim-notify)
+- [`nui`](https://github.com/MunifTanjim/nui.nvim)
 
-- [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
-- [echasnovski/mini.comment](https://dotfyle.com/plugins/echasnovski/mini.comment)
-
-### completion
-
-- [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
-
-### debugging
-
-- [mfussenegger/nvim-dap](https://dotfyle.com/plugins/mfussenegger/nvim-dap)
-- [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
-
-### editing-support
-
-- [folke/zen-mode.nvim](https://dotfyle.com/plugins/folke/zen-mode.nvim)
-- [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
-- [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
-
-### file-explorer
-
-- [echasnovski/mini.files](https://dotfyle.com/plugins/echasnovski/mini.files)
-
-### formatting
-
-- [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
-
-### fuzzy-finder
-
-- [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-
-### game
-
-- [ThePrimeagen/vim-be-good](https://dotfyle.com/plugins/ThePrimeagen/vim-be-good)
-
-### git
-
-- [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
-- [kdheepak/lazygit.nvim](https://dotfyle.com/plugins/kdheepak/lazygit.nvim)
-
-### icon
-
-- [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
-
-### indent
-
-- [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
-
-### keybinding
-
-- [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
-
-### lsp
-
-- [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
-- [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
-- [smjonas/inc-rename.nvim](https://dotfyle.com/plugins/smjonas/inc-rename.nvim)
-- [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
-
-### lsp-installer
-
-- [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
-
-### markdown-and-latex
-
-- [OXY2DEV/markview.nvim](https://dotfyle.com/plugins/OXY2DEV/markview.nvim)
-
-### motion
-
-- [tris203/precognition.nvim](https://dotfyle.com/plugins/tris203/precognition.nvim)
-
-### nvim-dev
-
-- [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
-- [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
-
-### plugin-manager
-
-- [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
-
-### snippet
-
-- [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
-
-### statusline
-
-- [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
-
-### syntax
-
-- [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
-- [echasnovski/mini.surround](https://dotfyle.com/plugins/echasnovski/mini.surround)
-
-### utility
-
-- [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
-- [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
-
-### workflow
-
-- [m4xshen/hardtime.nvim](https://dotfyle.com/plugins/m4xshen/hardtime.nvim)
-
-## Language Servers
-
-- cmake
-- gopls
-- html
-
-This readme was generated by [Dotfyle](https://dotfyle.com)

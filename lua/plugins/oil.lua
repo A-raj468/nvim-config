@@ -1,29 +1,16 @@
 return {
-    {
+    ['mini.nvim'] = { 'nvim-mini/mini.nvim' },
+    oil = {
         -- File explorer
         'stevearc/oil.nvim',
-        dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-        opts = {
+        args = {
             columns = {
                 'icon',
             },
             skip_confirm_for_simple_edits = true,
-            keymaps = {
-                ['gd'] = {
-                    desc = 'Toggle file detail view',
-                    callback = function()
-                        detail = not detail
-                        if detail then
-                            require('oil').set_columns { 'icon', 'permissions', 'size', 'mtime' }
-                        else
-                            require('oil').set_columns { 'icon' }
-                        end
-                    end,
-                },
-            },
         },
-        init = function()
-            vim.keymap.set('n', '<leader>o', require('oil').open, { desc = 'Open oil' })
+        after = function()
+            vim.keymap.set('n', '<leader>o', require('oil').open, { desc = 'Open [o]il' })
         end,
     },
 }
